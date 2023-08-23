@@ -72,7 +72,7 @@ _attribute_ram_code_ void EPD_detect_model(void)
     {
         epd_model = 1;
     }
-
+    epd_model = 4; // forçage à 4 pour modèles de chez Auchan
     EPD_POWER_OFF();
 }
 
@@ -286,7 +286,10 @@ _attribute_ram_code_ void epd_display(uint32_t time_is, uint16_t battery_mv, int
         resolution_w = 250;
         resolution_h = 128; // 122 real pixel, but needed to have a full byte
     }
-
+    //forçage pour modèle de chez Auchan
+    resolution_w = 250;
+    resolution_h = 128;
+    
     obdCreateVirtualDisplay(&obd, resolution_w, resolution_h, epd_temp);
     obdFill(&obd, 0, 0); // fill with white
 
